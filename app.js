@@ -11,8 +11,22 @@
 firebase.initializeApp(firebaseConfig);
 
 //Reference for form collection(3)
-let formMessage = firebase.database().ref('xi');
+let firedb = firebase.database().ref('xi');
 
+let vals;
+// let q = firedb.orderByChild("dong").equalTo(101);
+firedb.orderByChild("dong").equalTo(101).once('value').then(function(snapshot) {
+    console.log(snapshot.val());
+    let obj = snapshot.val();
+    let o = Object.keys(obj).map(key => {
+          return {
+            id: key,
+            ho: obj[key].ho,
+            time: obj[key].time
+          }
+        });
+    console.log(o);
+});
 //listen for submit event//(1)
 document
   .getElementById('registrationform')
@@ -46,7 +60,7 @@ function formSubmit(e) {
 //Send Message to Firebase(4)
 
 function sendMessage(dong, ho, month, day, time) {
-  let newFormMessage = formMessage.push();
+  let newFormMessage = firedb.push();
   newFormMessage.set({
     dong: parseInt(dong),
     ho: parseInt(ho),
