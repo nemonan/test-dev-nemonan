@@ -24,14 +24,14 @@ function formSubmit(e) {
   //Hide Alert Message After Seven Seconds(6)
   setTimeout(function() {
     document.querySelector('.alert').style.display = 'none';
-  }, 5000);
+  }, 2000);
 
   //Form Reset After Submission(7)
   document.getElementById('registrationform').reset();
   // redirect
   setTimeout(function() {
     window.location.href='view.html?dong='+ dong +'&line='+ getLine(dong, ho);
-  }, 5000);
+  }, 2000);
 }
 
 //Send Message to Firebase(4)
