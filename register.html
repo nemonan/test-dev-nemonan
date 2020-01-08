@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Registration Form</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+  <form action="" method="POST" id="registrationform">
+    <h3>xi 이사 예정일 입력</h3>
+    <span class="badge badge-danger">중복 입력시에 가장 최근값으로 업데이트됩니다.</span>
+    <div class="alert">!!! Message Sent !!!</div>
+    <fieldset>
+      <!-- section 2 -->
+          <label class="" for="bio">동:</label>
+      <select id="dong" required>
+        <option value="101">101</option>
+        <option value="102">102</option>
+        <option value="103">103</option>
+        <option value="104">104</option>
+        <option value="105">105</option>
+        <option value="106">106</option>
+        <option value="107">107</option>
+        <option value="108">108</option>
+        <option value="109">109</option>
+        <option value="110">110</option>
+        <option value="111">111</option>
+        <option value="112">112</option>
+        <option value="113">113</option>
+        <option value="114">114</option>
+      </select>
+
+      <label>호수:</label>
+      <input type="text" name="ho" value="" id="ho" required />
+      <br />
+
+      <label>날짜:</label>
+      <input id="txtDate" type="text" required/>
+
+
+      <label>시간대(3타임):</label>
+      <select id="time" required>
+        <option value="A">10~13</option>
+        <option value="B">13~15</option>
+        <option value="C">16~19</option>
+      </select>
+
+      <button type="submit" sendMessage()>등 록 </button>
+  </form>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<!--
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+-->
+  <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+  <script src="app.js"></script>
+  <script src="register.js"></script>
+  <script>
+   $(document).ready(function () {
+    var option = {
+		changeMonth: true,
+		changeYear: false,
+		numberOfMonths: 3,
+		dateFormat: "yy-mm-dd",
+		minDate: "2020-02-21",
+		maxDate: "2020-05-15"
+	};
+    $('#txtDate').datepicker(option);
+    });
+  </script>
+</body>
+
+</html>
