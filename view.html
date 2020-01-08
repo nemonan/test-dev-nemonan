@@ -103,6 +103,9 @@ function printNabDong() {
     for (var i = 112; i < 115; i++) {
         nav += replaceAll(nav2, "__DONG__", i);
     }
+    nav += `<li class="nav-item">
+            <a class="nav-link" href="register.html">[이사일등록]</a>
+          </li>`;
     navDong.innerHTML = nav;
 }
 function loopWeek() {
