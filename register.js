@@ -57,11 +57,14 @@ function sendMessage(dong, ho, month, day, time) {
     q.once('value').then(function(snapshot) {
         let obj = snapshot.val();
         if (obj != null) {
-            let list = Object.keys(obj).map(key => {
-                  return key
-                });
+//            let list = Object.keys(obj).map(key => {
+//                  return key
+//                });
+            
+            var keys = Object.keys(obj);
+            var key = keys[0];
 
-            upRef = firedb.ref('xi/' + subpath +'/'+ list[0]);
+            upRef = firedb.ref('xi/' + subpath +'/'+ key);
             console.log("AAAA " + upRef);
             upRef.update({
               month: parseInt(month),
