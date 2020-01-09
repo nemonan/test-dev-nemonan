@@ -24,14 +24,18 @@ function formSubmit(e) {
   //Hide Alert Message After Seven Seconds(6)
   setTimeout(function() {
     document.querySelector('.alert').style.display = 'none';
-  }, 1500);
+  }, 1000);
 
   //Form Reset After Submission(7)
   document.getElementById('registrationform').reset();
+
   // redirect
-  setTimeout(function() {
-    window.location.href='view.html?dong='+ dong +'&line='+ getLine(dong, ho);
-  }, 1500);
+//  setTimeout(function() {
+//    window.location.href='view.html?dong='+ dong +'&line='+ getLine(dong, ho);
+//  }, 1500);
+    let link = "view.html?dong="+ dong +"&line="+ getLine(dong, ho);
+    let m =  "<button type='button' onclick='window.location.href=\""+ link +"\"'>동/호 화면으로 이동</button>";
+    document.querySelector('#moveView').innerHTML = m;
 }
 
 //Send Message to Firebase(4)

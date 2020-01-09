@@ -52,13 +52,15 @@
 
 
       <label>시간대(3타임):</label>
-      <select id="time" required>
-        <option value="A">10~13</option>
-        <option value="B">13~15</option>
-        <option value="C">16~19</option>
+      <select id="time" required style="height: 70px;" size="3">
+        <option value="A">A) 10~13</option>
+        <option value="B" selected>B) 13~15</option>
+        <option value="C">C) 16~19</option>
       </select>
 
       <button type="submit" sendMessage()>등 록 </button>
+
+      <div id="moveView"></div>
   </form>
 
 <!-- The core Firebase JS SDK is always required and must be listed first -->
