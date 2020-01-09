@@ -35,35 +35,33 @@
 let viewList = document.querySelector('#viewList');
 let navDong = document.querySelector('#navDong');
 
-let thead = `
-        <thead>
-        <tr class="table-warning">
-            <th style='width: 12.5%'>날짜 __NUM__w </th>
-            __HEADER__
-        </tr>
-        </thead>`;
+let thead = "<thead>" +
+        "<tr class='table-warning'>" +
+            "<th style='width: 12.5%'>날짜 __NUM__w </th>" +
+            "__HEADER__" +
+        "</tr>" +
+        "</thead>";
 
-let tbody = `
-    <tbody>
-            <tr>
-                <td style="width: 12.5%" class="table-active">
-                    A: 10~13
-                </td>
-                __TR1__
-            </tr>
-            <tr>
-                <td style="width: 12.5%" class="table-active">
-                    B: 13~16
-                </td>
-                __TR2__
-            </tr>
-            <tr>
-                <td style="width: 12.5%" class="table-active">
-                    C: 16~19
-                </td>
-                __TR3__
-            </tr>
-    </tbody>`;
+let tbody = "<tbody>" +
+    "       <tr>" +
+    "           <td style='width: 12.5%' class='table-active'>" +
+    "               A: 10~13" +
+    "           </td>" +
+    "           __TR1__" +
+    "       </tr>" +
+    "       <tr>" +
+    "           <td style='width: 12.5%' class='table-active'>" +
+    "               B: 13~16" +
+    "           </td>" +
+    "           __TR2__" +
+    "       </tr>" +
+    "       <tr>" +
+    "           <td style='width: 12.5%' class='table-active'>" +
+    "               C: 16~19" +
+    "           </td>" +
+    "           __TR3__" +
+    "       </tr>" +
+    "</tbody>";
 
 let yoils = ["<font color=red>일</font>", "월", "화", "수", "목", "금", "<font color=red>토</font>"];
 
@@ -78,23 +76,22 @@ printNabDong();
 loopWeek();
 
 function printNabDong() {
-    nav1 = `
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">__DONG__</a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="?dong=__DONG__&line=L12">12라인</a>
-          <a class="dropdown-item" href="?dong=__DONG__&line=L34">34라인</a>
-          <a class="dropdown-item" href="?dong=__DONG__&line=L56">56라인</a>
-        </div>
-      </li>`;
-    nav2 = `
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">__DONG__</a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="?dong=__DONG__&line=L123">123라인</a>
-          <a class="dropdown-item" href="?dong=__DONG__&line=L45">45라인</a>
-        </div>
-      </li>`;
+    nav1 = "<li class='nav-item dropdown'>" +
+      "  <a class='nav-link dropdown-toggle' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'>__DONG__</a>"+
+      "  <div class='dropdown-menu'>"+
+      "    <a class='dropdown-item' href='?dong=__DONG__&line=L12'>12라인</a>"+
+      "    <a class='dropdown-item' href='?dong=__DONG__&line=L34'>34라인</a>"+
+      "    <a class='dropdown-item' href='?dong=__DONG__&line=L56'>56라인</a>"+
+      "  </div>"+
+      "</li>";
+
+    nav2 = "<li class='nav-item dropdown'>" +
+      "  <a class='nav-link dropdown-toggle' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'>__DONG__</a>"+
+      "  <div class='dropdown-menu'>"+
+      "    <a class='dropdown-item' href='?dong=__DONG__&line=L123'>123라인</a>"+
+      "    <a class='dropdown-item' href='?dong=__DONG__&line=L45'>45라인</a>"+
+      "  </div>"+
+      "</li>";
 
     nav = "";
     for (var i = 101; i < 112; i++) {
@@ -103,9 +100,9 @@ function printNabDong() {
     for (var i = 112; i < 115; i++) {
         nav += replaceAll(nav2, "__DONG__", i);
     }
-    nav += `<li class="nav-item">
-            <a class="nav-link" href="register.html">[이사일등록]</a>
-          </li>`;
+    nav += "<li class='nav-item'>" +
+          "  <a class='nav-link' href='register.html'>[이사일등록]</a>" +
+          "</li>";
     navDong.innerHTML = nav;
 }
 function loopWeek() {
@@ -140,9 +137,9 @@ function printInnerHTML(numbers, num) {
 function myFunction(value, index, array) {
   //console.log(value[0] +"/"+ value[1]);
   soTh += "<th style='width: 12.5%'>"+ value[0] + "/" + value[1] + " ("+ yoils[index] +")</th>";
-  soTr1 += `<td style='width: 12.5%'>
-               <div id='m`+ value[0] +`-`+ value[1] + `-A'><span class='badge badge-light'>-</span></div>
-            </td>`;
+  soTr1 += "<td style='width: 12.5%'>" +
+               "<div id='m"+ value[0] +"-"+ value[1] + "-A'><span class='badge badge-light'>-</span></div>" +
+            "</td>";
 }
 </script>
 
