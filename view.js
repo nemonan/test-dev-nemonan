@@ -1,13 +1,9 @@
-result = getJsonFromUrl();
+let params = getJsonFromUrl();
+viewTitle.innerText = params.dong + " 동 "+ params.line.replace("L", "") +"호 라인";
 
-let viewTitle = document.querySelector('#viewTitle');
-viewTitle.innerText = result.dong + " 동 "+ result.line.replace("L", "") +"호 라인";
-
-
-let subpath = result.dong +"/"+ result.line;
+let subpath = params.dong +"/"+ params.line;
 let firedbref = firedb.ref('xi/' + subpath);
 
-let vals;
 firedbref.once('value').then(function(snapshot) {
 //    console.log(snapshot.val());
     let obj = snapshot.val();
@@ -46,6 +42,15 @@ firedbref.once('value').then(function(snapshot) {
                 s.innerHTML += " <span class='badge badge-danger'>"+ o.ho +"</span>";
             }
         });
+
+        var regCount = list.length;
+        console.log("AAA" + regCount);
+
+        let viewTitle = document.querySelector('#viewTitle');
+        console.log(regCount);
+        viewTitle.innerHTML += " (참여: <font color='e04000'>" + regCount + "</font>)";
+    } else {
+        viewTitle.innerHTML += " (미참여)";
     }
 });
 
