@@ -57,29 +57,26 @@ function sendMessage(dong, ho, month, day, time) {
     q.once('value').then(function(snapshot) {
         let obj = snapshot.val();
         if (obj != null) {
-//            let list = Object.keys(obj).map(key => {
-//                  return key
-//                });
-            
+
             var keys = Object.keys(obj);
             var key = keys[0];
 
             upRef = firedb.ref('xi/' + subpath +'/'+ key);
-            console.log("AAAA " + upRef);
-            upRef.update({
-              month: parseInt(month),
-              day: parseInt(day),
-              time: time
-            });
+            console.log(">>> " + upRef);
+            var upDict = {}
+            upDict["month"] = parseInt(month);
+            upDict["day"] = parseInt(day);
+            upDict["time"] = time;
+            upRef.update(upDict);
         } else {
-          let newFormMessage = firedbref.push();
-          newFormMessage.set({
-            dong: parseInt(dong),
-            ho: parseInt(ho),
-            month: parseInt(month),
-            day: parseInt(day),
-            time: time
-          });
+            let newFormMessage = firedbref.push();
+            var dict = {}
+            dict["dong"] = parseInt(dong);
+            dict["ho"] = parseInt(ho);
+            dict["month"] = parseInt(month);
+            dict["day"] = parseInt(day);
+            dict["time"] = time;
+            newFormMessage.set(dict);
         }
     });
 }
