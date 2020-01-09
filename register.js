@@ -18,24 +18,14 @@ function formSubmit(e) {
   //send message values
   sendMessage(dong, ho, month, day, time);
 
-  //Show Alert Message(5)
-  document.querySelector('.alert').style.display = 'block';
-
   //Hide Alert Message After Seven Seconds(6)
   setTimeout(function() {
     document.querySelector('.alert').style.display = 'none';
-  }, 1000);
+  }, 10000);
 
   //Form Reset After Submission(7)
   document.getElementById('registrationform').reset();
 
-  // redirect
-//  setTimeout(function() {
-//    window.location.href='view.html?dong='+ dong +'&line='+ getLine(dong, ho);
-//  }, 1500);
-    let link = "view.html?dong="+ dong +"&line="+ getLine(dong, ho);
-    let m =  "<button type='button' onclick='window.location.href=\""+ link +"\"'>동/호 화면으로 이동</button>";
-    document.querySelector('#moveView').innerHTML = m;
 }
 
 //Send Message to Firebase(4)
@@ -67,20 +57,50 @@ function sendMessage(dong, ho, month, day, time) {
 
             upRef = firedb.ref('xi/' + subpath +'/'+ key);
             console.log(">>> " + upRef);
-            var upDict = {}
-            upDict["month"] = parseInt(month);
-            upDict["day"] = parseInt(day);
-            upDict["time"] = time;
-            upRef.update(upDict);
+
+            // 이미 등록된 경우, 신중하게 처리
+            var cInfo = month +"월 " + day +"일 "+ time +"타임";
+            var msg = "중복된 동호수("+ dong +"-"+ ho +")가 있습니다. 계속 진행할 경우 현재 값("+ cInfo +")으로 변경됩니다!";
+            if (confirm(msg)) {
+                var upDict = {}
+                upDict["month"] = parseInt(month);
+                upDict["day"] = parseInt(day);
+                upDict["time"] = time;
+                upRef.update(upDict);
+                //Show Alert Message(5)
+                document.querySelector('.alert').style.display = 'block';
+                redirectView(dong, ho);
+            } else {
+                alert("취소 되었습니다.");
+            }
         } else {
-            let newFormMessage = firedbref.push();
-            var dict = {}
-            dict["dong"] = parseInt(dong);
-            dict["ho"] = parseInt(ho);
-            dict["month"] = parseInt(month);
-            dict["day"] = parseInt(day);
-            dict["time"] = time;
-            newFormMessage.set(dict);
+            var cInfo = month +"월 " + day +"일 "+ time +"타임";
+            var msg = "입력한 동호수는 <"+ dong +"동 "+ ho +"호> 입니다. 맞는지 한번 더 확인해주세요!";
+            if (confirm(msg)) {
+                let newFormMessage = firedbref.push();
+                var dict = {}
+                dict["dong"] = parseInt(dong);
+                dict["ho"] = parseInt(ho);
+                dict["month"] = parseInt(month);
+                dict["day"] = parseInt(day);
+                dict["time"] = time;
+                newFormMessage.set(dict);
+                //Show Alert Message(5)
+                document.querySelector('.alert').style.display = 'block';
+                redirectView(dong, ho);
+            } else {
+                alert("취소 되었습니다.");
+            }
         }
     });
+}
+
+function redirectView(dong, ho) {
+  // redirect
+//  setTimeout(function() {
+//    window.location.href='view.html?dong='+ dong +'&line='+ getLine(dong, ho);
+//  }, 1500);
+    let link = "view.html?dong="+ dong +"&line="+ getLine(dong, ho);
+    let m =  "<button type='button' onclick='window.location.href=\""+ link +"\"'>동/호 화면으로 이동</button>";
+    document.querySelector('#moveView').innerHTML = m;
 }

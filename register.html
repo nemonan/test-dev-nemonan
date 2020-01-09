@@ -22,7 +22,7 @@
   <form action="" method="POST" id="registrationform">
     <h3>xi 이사 예정일 입력</h3>
     <span class="badge badge-danger">중복 입력시에 가장 최근값으로 업데이트됩니다.</span>
-    <div class="alert">!!! 등록성공, 잠시만 기달려주세요 !!!</div>
+    <div class="alert">!!! 등록성공, [동/호 이동] 버튼을 눌러주세요 !!!</div>
     <fieldset>
       <!-- section 2 -->
           <label class="" for="bio">동:</label>
@@ -41,10 +41,11 @@
         <option value="112">112</option>
         <option value="113">113</option>
         <option value="114">114</option>
+        <option value="120" selected>120</option>
       </select>
 
       <label>호수:</label>
-      <input type="text" name="ho" value="" id="ho" required />
+      <input type="text" name="ho" id="ho" step="1" required />
       <br />
 
       <label>날짜:</label>
