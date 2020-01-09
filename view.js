@@ -26,7 +26,7 @@ firedbref.once('value').then(function(snapshot) {
             // https://knemonan.firebaseio.com/xi/105/L12/-Ly7ep8Pxyw7-dFDTK60
             fbPath = "xi/" + subpath + "/"+ o.id;
             if (s == null || s.innerText == null || s.innerText.length <= 1) {
-                s.innerHTML = " <span class='badge badge-primary' title='"+ fbPath +"'>"
+                s.innerHTML = " <span class='badge badge-success' title='"+ fbPath +"'>"
                             + o.ho +"</span>";
             }
             else {
