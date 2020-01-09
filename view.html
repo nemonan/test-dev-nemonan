@@ -8,6 +8,14 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+    body {
+        line-height: 1.0;
+    }
+    .nav-link {
+        padding: .5rem .5rem;
+    }
+    </style>
 </head>
 
 <body>
@@ -24,7 +32,8 @@
       </li>
     </ul>
 
-    <p class="h2" id="viewTitle">동 호 라인 (위에서 원하는 동을 선택)</p>
+    <p class="h4" id="viewTitle">동 호 라인 (위에서 원하는 동을 선택)</p>
+    <div class="badge badge-warning">* 예약에 참조만하실뿐, 실제 확정은 추후 자이 시스템에서 하셔야합니다!</div>
 
     <table id="viewList" class="table table-sm table-bordered">
     </table>
@@ -37,26 +46,26 @@ let navDong = document.querySelector('#navDong');
 
 let thead = "<thead>" +
         "<tr class='table-warning'>" +
-            "<th style='width: 12.5%'>__DONG__동 __NUM__w </th>" +
+            "<th style='width: 9%'>__DONG__동 <!--__NUM__w--> </th>" +
             "__HEADER__" +
         "</tr>" +
         "</thead>";
 
 let tbody = "<tbody>" +
     "       <tr>" +
-    "           <td style='width: 12.5%' class='table-active'>" +
+    "           <td style='width: 9%' class='table-active'>" +
     "               A: 10~13" +
     "           </td>" +
     "           __TR1__" +
     "       </tr>" +
     "       <tr>" +
-    "           <td style='width: 12.5%' class='table-active'>" +
+    "           <td style='width: 9%' class='table-active'>" +
     "               B: 13~16" +
     "           </td>" +
     "           __TR2__" +
     "       </tr>" +
     "       <tr>" +
-    "           <td style='width: 12.5%' class='table-active'>" +
+    "           <td style='width: 9%' class='table-active'>" +
     "               C: 16~19" +
     "           </td>" +
     "           __TR3__" +
@@ -133,19 +142,16 @@ function printInnerHTML(numbers, num, dong) {
 
 function myFunction(value, index, array) {
   //console.log(value[0] +"/"+ value[1]);
-  soTh += "<th style='width: 12.5%'>"+ value[0] + "/" + value[1] + " ("+ yoils[index] +")</th>";
-  soTr1 += "<td style='width: 12.5%'>" +
+  soTh += "<th style='width: 13%'>"+ value[0] + "/" + value[1] + " ("+ yoils[index] +")</th>";
+  soTr1 += "<td style='width: 13%'>" +
                "<div id='m"+ value[0] +"-"+ value[1] + "-A'><span class='badge badge-light'>-</span></div>" +
             "</td>";
 }
 
 function removeOld(str) {
-    ss = str.replace("2/16", "")
-            .replace("2/17", "")
-            .replace("2/18", "")
-            .replace("2/19", "")
-            .replace("2/20", "")
-            .replace("5/16", "");
+    ss = str.replace("2/16", "").replace("2/17", "")
+            .replace("2/18", "").replace("2/19", "")
+            .replace("2/20", "").replace("5/16", "");
     return ss;
 }
 
@@ -160,7 +166,6 @@ function getJsonFromUrl() {
   return result;
 }
 </script>
-
 
 <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase-database.js"></script>
