@@ -98,6 +98,7 @@ function printNabDong() {
           "</li>";
     navDong.innerHTML = nav;
 }
+
 function loopWeek() {
     sdate = new Date("02/16/2020");   // 2020-02-16
     let params = getJsonFromUrl();
@@ -124,7 +125,8 @@ function printInnerHTML(numbers, num, dong) {
     soTr1 = ""
     viewRaw = ""
     numbers.forEach(myFunction);
-    viewRaw += thead.replace("__HEADER__", soTh).replace("__NUM__", num).replace("__DONG__", dong);
+    var repThead = thead.replace("__HEADER__", soTh).replace("__NUM__", num).replace("__DONG__", dong);
+    viewRaw += removeOld(repThead);
     viewRaw += tbody.replace("__TR1__", soTr1).replace("__TR2__", replaceAll(soTr1, "-A", "-B")).replace("__TR3__", replaceAll(soTr1, "-A", "-C"));
     viewList.innerHTML += viewRaw
 }
@@ -135,6 +137,16 @@ function myFunction(value, index, array) {
   soTr1 += "<td style='width: 12.5%'>" +
                "<div id='m"+ value[0] +"-"+ value[1] + "-A'><span class='badge badge-light'>-</span></div>" +
             "</td>";
+}
+
+function removeOld(str) {
+    ss = str.replace("2/16", "")
+            .replace("2/17", "")
+            .replace("2/18", "")
+            .replace("2/19", "")
+            .replace("2/20", "")
+            .replace("5/16", "");
+    return ss;
 }
 
 function getJsonFromUrl() {
