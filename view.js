@@ -22,16 +22,17 @@ firedbref.once('value').then(function(snapshot) {
 
         list.forEach(function (o) {
 //            console.log(o.ho + " "+ o.day);
-            s = document.querySelector('#m'+o.month+'-'+ o.day +'-'+ o.time);
+            cell = document.querySelector('#m'+o.month+'-'+ o.day +'-'+ o.time);
             // https://knemonan.firebaseio.com/xi/105/L12/-Ly7ep8Pxyw7-dFDTK60
             fbPath = "xi/" + subpath + "/"+ o.id;
-            if (s == null || s.innerText == null || s.innerText.length <= 1) {
-                s.innerHTML = " <span class='badge badge-success' title='"+ fbPath +"'>"
+            if (cell == null || cell.innerText == null || cell.innerText.length <= 1) {
+                cell.innerHTML = " <span class='badge badge-success' title='"+ fbPath +"'>"
                             + o.ho +"</span>";
             }
             else {
-                s.innerHTML += " <span class='badge badge-danger' title='"+ fbPath + "'>"
+                cell.innerHTML += " <span class='badge badge-danger' title='"+ fbPath + "'>"
                             + o.ho +"</span>";
+                cell.parentElement.setAttribute("class", "bg-danger");
             }
         });
 
