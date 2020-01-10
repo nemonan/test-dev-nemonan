@@ -21,26 +21,22 @@
 
   <form action="" method="POST" id="registrationform">
     <h3>xi 이사 예정일 입력</h3>
-    <span class="badge badge-danger">중복 입력시에 가장 최근값으로 업데이트됩니다.</span>
+    <ul class="list-group">
+    <li class="list-group-item list-group-item-danger"># 중복된 동/호수 입력시에 현재 날짜/시간으로 업데이트됩니다.</li>
+    </ul>
     <div class="alert">!!! 등록성공, [동/호 이동] 버튼을 눌러주세요 !!!</div>
+    <div id="moveView"></div>
+
+    <br>
     <fieldset>
       <!-- section 2 -->
-          <label class="" for="bio">동:</label>
+      <label class="" for="bio">동:</label>
       <select id="dong" required>
-        <option value="101">101</option>
-        <option value="102">102</option>
-        <option value="103">103</option>
-        <option value="104">104</option>
-        <option value="105">105</option>
-        <option value="106">106</option>
-        <option value="107">107</option>
-        <option value="108">108</option>
-        <option value="109">109</option>
-        <option value="110">110</option>
-        <option value="111">111</option>
-        <option value="112">112</option>
-        <option value="113">113</option>
-        <option value="114">114</option>
+        <option value="101">101</option> <option value="102">102</option> <option value="103">103</option>
+        <option value="104">104</option> <option value="105">105</option> <option value="106">106</option>
+        <option value="107">107</option> <option value="108">108</option> <option value="109">109</option>
+        <option value="110">110</option> <option value="111">111</option> <option value="112">112</option>
+        <option value="113">113</option> <option value="114">114</option>
       </select>
 
       <label>호수:</label>
@@ -59,8 +55,6 @@
       </select>
 
       <button type="submit" sendMessage()>등 록 </button>
-
-      <div id="moveView"></div>
   </form>
 
 <!-- The core Firebase JS SDK is always required and must be listed first -->
